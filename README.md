@@ -9,17 +9,7 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Sutta mart website Laravel11 is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 ## Learning Laravel
 
@@ -33,23 +23,6 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
@@ -65,92 +38,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-
-js thumbnails
-
-document.getElementById('brand_thumbnail').addEventListener('change', function(event) {
-	let reader = new FileReader();
-	reader.onload = function() {
-		let output = document.getElementById('view_thumbnail_image');
-		output.src = reader.result;
-		output.style.display = "block";
-		document.getElementById('remove_thumbnail').style.display = "block";
-	};
-	reader.readAsDataURL(event.target.files[0]);
-});
-
-function onMediaImageRemove(inputId) {
-	document.getElementById(inputId).value = "";
-	document.getElementById('view_thumbnail_image').src = "#";
-	document.getElementById('view_thumbnail_image').style.display = "none";
-	document.getElementById('remove_thumbnail').style.display = "none";
-}
-
-------------
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="brand_thumbnail">{{ __('Image') }}</label>
-        <div class="tp-upload-field">
-            <input type="file" name="thumbnail" id="brand_thumbnail" class="form-control" accept="image/*">
-        </div>
-        <em>Recommended image size: width 300px & height 200px.</em>
-        <div id="remove_thumbnail" class="select-image" style="display:none;">
-            <div class="inner-image">
-                <img id="view_thumbnail_image" src="#" alt="Preview" style="max-width:100px; display:none;">
-            </div>
-            <a onclick="onMediaImageRemove('brand_thumbnail')" class="media-image-remove" href="javascript:void(0);">
-                <i class="fa fa-remove"></i>
-            </a>
-        </div>
-    </div>
-</div>
-
--------------
-use Illuminate\Support\Facades\Storage;
-
-$thumbnailPath = null;
-    if ($request->hasFile('thumbnail')) {
-        $image = $request->file('thumbnail');
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $thumbnailPath = 'uploads/brands/' . $imageName;
-
-        // Store the image in storage/app/public/uploads/brands/
-        $image->storeAs('uploads/brands', $imageName, 'public');
-    }
---------------
-@if ($row->thumbnail != '')
-				<td class="text-center"><div class="table_col_image"><img src="{{ asset('storage') }}/{{ $row->thumbnail }}" /></div></td>
-				@else
-				<td class="text-center"><div class="table_col_image"><img src="{{ asset('admin') }}/images/album_icon.png" /></div></td>
-				@endif
--------------
-
-function onConfirmWhenAddEdit() {
-    let formData = new FormData($('#DataEntry_formId')[0]); // Capture entire form
-
-    $.ajax({
-        type: 'POST',
-        url: base_url + '/admin/saveBrandsData',
-        data: formData,
-        processData: false, // Required for file upload
-        contentType: false, // Required for file upload
-        success: function (response) {
-            var msgType = response.msgType;
-            var msg = response.msg;
-
-            if (msgType == "success") {
-                resetForm("DataEntry_formId");
-                onRefreshData();
-                onSuccessMsg(msg);
-                onListPanel();
-            } else {
-                onErrorMsg(msg);
-            }
-
-            onCheckAll();
-        }
-    });
-}
 
 
 
